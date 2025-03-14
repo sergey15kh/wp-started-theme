@@ -1,0 +1,146 @@
+/* ===============================================
+   ⚙️ Modern Normalize SCSS (by Serhii Aliiev)
+   =============================================== */
+
+/* Use border-box for all elements */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/* Reset vertical margins for key elements with class */
+:where(
+  h1, h2, h3, h4, h5, h6,
+  p,
+  ul, ol,
+  dl
+):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Remove bullets and padding for ul with class */
+:where(ul[class]) {
+  padding-left: 0;
+  list-style: none;
+}
+
+/* Make address elements not italic */
+:where(address[class]) {
+  font-style: normal;
+}
+
+/* Paragraph spacing */
+p {
+  --paragraphMarginBottom: 1.5rem;
+  margin-block: 0;
+}
+
+/* Paragraph margin bottom if not last and has no class */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/* Make media elements responsive */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Inherit font in form controls */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* HTML base setup */
+html {
+  height: 100%;
+  scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Smooth scrolling */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+/* Body defaults */
+body {
+  min-height: 100%;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Link elements with class — clean look */
+a:where([class]) {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Pointer cursor for buttons and labels */
+button,
+label {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Unify SVG fill color unless custom defined */
+:where([fill]:not([fill="none"], [fill^="url"])) {
+  fill: currentColor;
+}
+
+/* Unify SVG stroke color unless custom defined */
+:where([stroke]:not([stroke="none"], [stroke^="url"])) {
+  stroke: currentColor;
+}
+
+/* Fix SVG transition on color change */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/* Classic table reset */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+  width: 100%;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

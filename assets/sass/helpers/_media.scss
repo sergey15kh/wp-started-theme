@@ -1,0 +1,36 @@
+@use "functions" as *;
+
+$tablet: 768;
+$laptop: 1440;
+$desktop: 1920;
+
+@mixin media-min($min) {
+  @media (min-width: #{rem($min)}) {
+	@content;
+  }
+}
+
+@mixin media-max($max) {
+  @media (max-width: #{rem($max)}) {
+	@content;
+  }
+}
+
+
+@mixin tablet {
+  @include media($tablet) {
+	@content;
+  }
+}
+
+@mixin laptop {
+  @include media($laptop) {
+	@content;
+  }
+}
+
+@mixin desktop {
+  @include media($desktop) {
+	@content;
+  }
+}

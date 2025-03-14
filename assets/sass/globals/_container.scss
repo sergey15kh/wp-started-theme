@@ -1,0 +1,26 @@
+@use "../helpers" as *;
+
+$container-widths: (
+	mobile: 100%,
+	tablet: 720px,
+	laptop: 1080px,
+	desktop: 1320px
+);
+
+.container {
+  width: map-get($container-widths, mobile);
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @include tablet {
+	width: map-get($container-widths, tablet);
+  }
+
+  @include laptop {
+	width: map-get($container-widths, laptop);
+  }
+
+  @include desktop {
+	width: map-get($container-widths, desktop);
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "custom-theme",
+  "version": "1.0.0",
+  "description": "Modern WordPress theme using SCSS and esbuild for lightning-fast development.",
+  "author": "Serhii Aliiev",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "wordpress",
+    "theme",
+    "scss",
+    "esbuild",
+    "watch"
+  ],
+  "scripts": {
+    "dev": "npm-run-all --parallel watch:sass watch:js",
+    "watch:sass": "sass assets/sass/main.scss css/app.css --style=expanded --watch",
+    "watch:js": "esbuild assets/js/index.js --bundle --outfile=js/app.js --format=iife --watch",
+    "build": "npm run build:sass && npm run build:js",
+    "build:sass": "sass assets/sass/main.scss css/app.css --style=compressed",
+    "build:js": "esbuild assets/js/index.js --bundle --minify --outfile=js/app.js --format=iife"
+  },
+  "devDependencies": {
+    "sass": "1.72.0",
+    "esbuild": "^0.25.1",
+    "npm-run-all": "^4.1.5"
+  }
+}
