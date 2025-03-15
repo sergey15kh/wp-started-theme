@@ -9,19 +9,23 @@
     "theme",
     "scss",
     "esbuild",
-    "watch"
+    "watch",
+    "autoprefixer"
   ],
   "scripts": {
     "dev": "npm-run-all --parallel watch:sass watch:js",
-    "watch:sass": "sass assets/sass/main.scss css/app.css --style=expanded --watch",
+    "watch:sass": "sass assets/sass/main.scss | postcss -o css/app.css --watch",
     "watch:js": "esbuild assets/js/index.js --bundle --outfile=js/app.js --format=iife --watch",
     "build": "npm run build:sass && npm run build:js",
-    "build:sass": "sass assets/sass/main.scss css/app.css --style=compressed",
+    "build:sass": "sass assets/sass/main.scss | postcss -o css/app.css",
     "build:js": "esbuild assets/js/index.js --bundle --minify --outfile=js/app.js --format=iife"
   },
   "devDependencies": {
     "sass": "1.72.0",
     "esbuild": "^0.25.1",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^10.1.0",
+    "autoprefixer": "^10.4.19"
   }
 }
