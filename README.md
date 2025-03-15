@@ -100,6 +100,49 @@
   </div>
 </div>
 ```
+### 🌗 Переключение светлой и тёмной темы
+
+✅ **Работает на основе CSS-переменных**  
+💾 Сохраняется в `localStorage`  
+🌓 Автоматически определяет системную тему
+
+#### 📦 HTML-пример:
+
+```html
+<!-- Кнопка переключения темы -->
+<button data-theme-toggle aria-label="Переключить тему">🌓</button>
+```
+
+#### 🎨 SCSS (themes):
+
+```scss
+// themes/_light.scss
+:root {
+  --color-bg: #ffffff;
+  --color-text: #111111;
+  --color-accent: #1b84ff;
+}
+
+// themes/_dark.scss
+[data-theme="dark"] {
+  --color-bg: #111111;
+  --color-text: #ffffff;
+  --color-accent: #1b84ff;
+}
+```
+
+#### 🧠 Использование переменных:
+
+```scss
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+a {
+  color: var(--color-accent);
+}
+
+
 
 ---
 
@@ -114,3 +157,5 @@
 ## 👨‍💻 Автор
 
 Serhii Aliiev · [GitHub](https://github.com) · [2025]
+---
+

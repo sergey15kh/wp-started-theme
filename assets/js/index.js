@@ -5,6 +5,7 @@ import initTabs from './components/tabs.js';
 import initDropdown from './components/dropdown.js';
 import initStickyHeader from './components/sticky-header.js';
 import initSmoothScroll from './components/smooth-scroll.js';
+import initThemeToggle from './components/theme-toggle';
 
 document.addEventListener('DOMContentLoaded', () => {
   initBurger();
@@ -14,4 +15,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initDropdown();
   initStickyHeader();
   initSmoothScroll();
+  initThemeToggle();
 });
