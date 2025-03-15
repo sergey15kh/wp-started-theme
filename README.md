@@ -110,7 +110,10 @@
 
 ```html
 <!-- Кнопка переключения темы -->
-<button data-theme-toggle aria-label="Переключить тему">🌓</button>
+<button data-theme-toggle aria-label="Переключить тему">
+  <span class="theme-icon" data-theme-icon="light">🌞</span>
+  <span class="theme-icon" data-theme-icon="dark">🌙</span>
+</button>
 ```
 
 #### 🎨 SCSS (themes):
