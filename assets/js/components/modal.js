@@ -1,38 +1,18 @@
-// assets/js/components/modal.js
+export default function initBurger() {
+  const burgers = document.querySelectorAll('[data-burger]');
 
-const modalTriggers = document.querySelectorAll('[data-modal-trigger]');
-const modals = document.querySelectorAll('[data-modal]');
-const modalCloseButtons = document.querySelectorAll('[data-modal-close]');
+  if (!burgers.length) return;
 
-// Открытие модальных окон
-modalTriggers.forEach(trigger => {
-  trigger.addEventListener('click', () => {
-    const target = trigger.getAttribute('data-modal-trigger');
-    const modal = document.querySelector(`[data-modal="${target}"]`);
-    if (modal) {
-      modal.classList.add('is-visible');
-      document.body.classList.add('no-scroll');
-    }
+  burgers.forEach((burger) => {
+    const navSelector = burger.getAttribute('data-target') || '[data-nav]';
+    const nav = document.querySelector(navSelector);
+
+    if (!nav) return;
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-active');
+      nav.classList.toggle('is-open');
+      document.body.classList.toggle('no-scroll');
+    });
   });
-});
-
-// Закрытие модальных окон кнопками
-modalCloseButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = button.closest('[data-modal]');
-    if (modal) {
-      modal.classList.remove('is-visible');
-      document.body.classList.remove('no-scroll');
-    }
-  });
-});
-
-// Закрытие модальных окон при клике вне контента
-modals.forEach(modal => {
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('is-visible');
-      document.body.classList.remove('no-scroll');
-    }
-  });
-});
+}

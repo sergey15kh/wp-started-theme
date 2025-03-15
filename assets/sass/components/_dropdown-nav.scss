@@ -1,1 +1,10 @@
 @use "../helpers" as *;
+
+.dropdown__menu {
+  display: none;
+
+  &.is-open,
+  .dropdown.is-open & {
+	display: block;
+  }
+}

@@ -1,12 +1,16 @@
-const smoothLinks = document.querySelectorAll('a[href^="#"]');
+export default function initSmoothScroll() {
+  const links = document.querySelectorAll('a[href^="#"]:not([href="#"])');
 
-smoothLinks.forEach(link => {
-  link.addEventListener('click', function(e) {
-    const targetId = this.getAttribute('href').substring(1);
-    const targetEl = document.getElementById(targetId);
-    if (targetEl) {
-      e.preventDefault();
-      targetEl.scrollIntoView({ behavior: 'smooth' });
-    }
+  links.forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      const targetId = href.slice(1);
+      const target = document.getElementById(targetId);
+
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   });
-});
+}

@@ -1,7 +1,17 @@
-import './components/burger.js';
-import './components/modal.js';
-import './components/smooth-scroll.js';
-import './components/accordion.js';
-import './components/tabs.js';
-import './components/dropdown-nav.js';
-import './components/sticky-header.js';
+import initBurger from './components/burger.js';
+import initModal from './components/modal.js';
+import initAccordion from './components/accordion.js';
+import initTabs from './components/tabs.js';
+import initDropdown from './components/dropdown.js';
+import initStickyHeader from './components/sticky-header.js';
+import initSmoothScroll from './components/smooth-scroll.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  initBurger();
+  initModal();
+  initAccordion();
+  initTabs();
+  initDropdown();
+  initStickyHeader();
+  initSmoothScroll();
+});

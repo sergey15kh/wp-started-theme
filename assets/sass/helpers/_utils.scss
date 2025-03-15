@@ -1,0 +1,26 @@
+// ===== Absolute centering
+.u-center-absolute {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+// ===== Visually hidden (доступен для screen reader'ов)
+.u-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// ===== No-scroll (блокировать скролл body)
+.u-no-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+}

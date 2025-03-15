@@ -1,1 +1,28 @@
 @use "../helpers" as *;
+
+.tabs-nav {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+[data-tab-button] {
+  padding: 0.5rem 1rem;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &.is-active {
+	background-color: #1b84ff;
+	color: #fff;
+  }
+}
+
+.tabs-content > [data-tab-content] {
+  display: none;
+
+  &.is-active {
+	display: block;
+  }
+}

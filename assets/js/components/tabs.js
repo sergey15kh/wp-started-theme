@@ -1,23 +1,23 @@
-const tabsContainers = document.querySelectorAll('[data-tabs]');
+export default function initTabs() {
+  const containers = document.querySelectorAll('[data-tabs]');
 
-tabsContainers.forEach(container => {
-  const tabButtons = container.querySelectorAll('[data-tab-button]');
-  const tabContents = container.querySelectorAll('[data-tab-content]');
+  containers.forEach(container => {
+    const buttons = container.querySelectorAll('[data-tab-button]');
+    const contents = container.querySelectorAll('[data-tab-content]');
 
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const target = button.getAttribute('data-tab-button');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.tabButton;
 
-      // Убираем активные классы со всех кнопок и контента
-      tabButtons.forEach(btn => btn.classList.remove('is-active'));
-      tabContents.forEach(content => content.classList.remove('is-active'));
+        // Снимаем активные классы
+        buttons.forEach(btn => btn.classList.remove('is-active'));
+        contents.forEach(content => content.classList.remove('is-active'));
 
-      // Активируем выбранную вкладку
-      button.classList.add('is-active');
-      const activeContent = container.querySelector(`[data-tab-content="${target}"]`);
-      if (activeContent) {
-        activeContent.classList.add('is-active');
-      }
+        // Активируем нужное
+        button.classList.add('is-active');
+        const activeContent = container.querySelector(`[data-tab-content="${target}"]`);
+        if (activeContent) activeContent.classList.add('is-active');
+      });
     });
   });
-});
+}

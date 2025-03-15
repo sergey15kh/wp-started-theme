@@ -1,9 +1,12 @@
-const header = document.querySelector('header');
+export default function initStickyHeader() {
+  const header = document.querySelector('[data-sticky]');
 
-if (header) {
-  const stickyOffset = header.offsetTop;
+  if (!header) return;
+
+  const offset = header.offsetTop;
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > stickyOffset) {
+    if (window.scrollY > offset) {
       header.classList.add('is-sticky');
     } else {
       header.classList.remove('is-sticky');
