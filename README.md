@@ -141,8 +141,7 @@ body {
 a {
   color: var(--color-accent);
 }
-
-
+```
 
 ---
 
