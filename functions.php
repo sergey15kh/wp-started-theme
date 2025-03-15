@@ -40,8 +40,8 @@ add_action( 'widgets_init', function () {
 } );
 
 add_action( 'wp_enqueue_scripts', function () {
-  wp_enqueue_style( 'theme-style', get_template_directory_uri() . '/assets/css/app.css', [], _S_VERSION );
-  wp_enqueue_script( 'theme-script', get_template_directory_uri() . '/assets/js/app.js', [], _S_VERSION, true );
+  wp_enqueue_style( 'theme-style', get_template_directory_uri() . '/css/app.css', [], _S_VERSION );
+  wp_enqueue_script( 'theme-script', get_template_directory_uri() . '/js/app.js', [], _S_VERSION, true );
 
   wp_localize_script('theme-script', 'FormAjax', [
     'ajax_url' => admin_url('admin-ajax.php'),

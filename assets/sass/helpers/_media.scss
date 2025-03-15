@@ -1,36 +1,46 @@
 @use "functions" as *;
 
+// Брейкпоинты
 $tablet: 768;
 $laptop: 1440;
 $desktop: 1920;
 
+// Универсальный миксин min-width
 @mixin media-min($min) {
   @media (min-width: #{rem($min)}) {
 	@content;
   }
 }
 
+// Универсальный миксин max-width
 @mixin media-max($max) {
   @media (max-width: #{rem($max)}) {
 	@content;
   }
 }
 
+// Алиас для совместимости (если ты где-то уже писал @include media())
+@mixin media($min) {
+  @include media-min($min) {
+	@content;
+  }
+}
 
+// Упрощённые точки
 @mixin tablet {
-  @include media($tablet) {
+  @include media-min($tablet) {
 	@content;
   }
 }
 
 @mixin laptop {
-  @include media($laptop) {
+  @include media-min($laptop) {
 	@content;
   }
 }
 
 @mixin desktop {
-  @include media($desktop) {
+  @include media-min($desktop) {
 	@content;
   }
 }
