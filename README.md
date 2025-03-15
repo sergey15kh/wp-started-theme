@@ -120,7 +120,7 @@
 
 ```scss
 // themes/_light.scss
-:root {
+[data-theme="light"] {
   --color-bg: #ffffff;
   --color-text: #111111;
   --color-accent: #1b84ff;
