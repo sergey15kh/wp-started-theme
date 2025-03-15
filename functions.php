@@ -56,3 +56,4 @@ add_action( 'wp_enqueue_scripts', function () {
 require_once get_template_directory() . '/plugins/redux/redux-config.php';
 require_once get_template_directory() . '/plugins/acf/acf.php';
 require_once get_template_directory() . '/inc/ajax-form.php';
+require_once get_template_directory() . '/inc/functions.php';
