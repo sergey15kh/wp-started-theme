@@ -146,6 +146,18 @@ a {
 }
 ```
 
+### 📩 AJAX форма
+
+```html
+<form data-ajax-form>
+  <input type="text" name="fullname" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+  <button type="submit">Отправить</button>
+  <div data-form-result></div>
+</form>
+```
+
 ---
 
 ## 📎 Советы
