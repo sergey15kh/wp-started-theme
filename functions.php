@@ -43,11 +43,10 @@ add_action( 'wp_enqueue_scripts', function () {
   wp_enqueue_style( 'theme-style', get_template_directory_uri() . '/assets/css/app.css', [], _S_VERSION );
   wp_enqueue_script( 'theme-script', get_template_directory_uri() . '/assets/js/app.js', [], _S_VERSION, true );
 
-  wp_localize_script('theme-form-handler', 'FormAjax', [
+  wp_localize_script('theme-script', 'FormAjax', [
     'ajax_url' => admin_url('admin-ajax.php'),
     'nonce'    => wp_create_nonce('form_nonce'),
   ]);
-
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );
   }
@@ -56,3 +55,4 @@ add_action( 'wp_enqueue_scripts', function () {
 
 require_once get_template_directory() . '/plugins/redux/redux-config.php';
 require_once get_template_directory() . '/plugins/acf/acf.php';
+require_once get_template_directory() . '/inc/ajax-form.php';

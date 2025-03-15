@@ -1,27 +1,48 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('[data-ajax-form]');
-  if (!form) return;
+export default function initFormHandler() {
+  const forms = document.querySelectorAll('[data-ajax-form]');
+  if (!forms.length) return;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  forms.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    const formData = new FormData(form);
-    formData.append('action', 'handle_form_submission');
-    formData.append('nonce', FormAjax.nonce);
+      const result = form.querySelector('[data-form-result]');
+      const submitBtn = form.querySelector('[type="submit"]');
 
-    const result = form.querySelector('[data-form-result]');
-    result.textContent = 'Отправка...';
+      if (result) result.textContent = 'Отправка...';
 
-    try {
-      const res = await fetch(FormAjax.ajax_url, {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await res.json();
-      result.textContent = data.data.message;
-      form.reset();
-    } catch (err) {
-      result.textContent = 'Ошибка. Попробуйте позже.';
-    }
+      // 👉 Блокируем кнопку
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('is-disabled');
+        submitBtn.textContent = 'Отправка...';
+      }
+
+      const formData = new FormData(form);
+      formData.append('action', form.dataset.ajaxAction || 'handle_form_submission');
+      formData.append('nonce', FormAjax.nonce);
+
+      try {
+        const response = await fetch(FormAjax.ajax_url, {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (result) result.textContent = data?.data?.message || 'Отправлено';
+        if (data.success) form.reset();
+      } catch (err) {
+        if (result) result.textContent = 'Ошибка при отправке';
+        console.error('Form Error:', err);
+      } finally {
+        // 🔓 Разблокируем кнопку
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('is-disabled');
+          submitBtn.textContent = 'Отправить';
+        }
+      }
+    });
   });
-});
+}

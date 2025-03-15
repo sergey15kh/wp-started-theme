@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "dev": "npm-run-all --parallel watch:sass watch:js",
-    "watch:sass": "sass assets/sass/main.scss | postcss -o css/app.css --watch",
+    "watch:sass": "sass assets/sass/main.scss css/app.css --style=expanded --watch",
     "watch:js": "esbuild assets/js/index.js --bundle --outfile=js/app.js --format=iife --watch",
     "build": "npm run build:sass && npm run build:js",
     "build:sass": "sass assets/sass/main.scss | postcss -o css/app.css",
